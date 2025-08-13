@@ -11,14 +11,18 @@ config_version=5
 [application]
 
 config/name="Space Invaders"
+config/version="1.0.1"
 run/main_scene="uid://csxyquu2r73dc"
 config/features=PackedStringArray("4.4", "Mobile")
+boot_splash/image="uid://bjkwsspb32qwn"
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=480
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/handheld/orientation=1
 window/vsync/vsync_mode=0
 window/ios/hide_status_bar=false
@@ -30,3 +34,4 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

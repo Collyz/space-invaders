@@ -1,23 +1,13 @@
 shader_type canvas_item;
 
-uniform float time_speed = 0.1;
-
-// Helper: convert HSV to RGB
-vec3 hsv2rgb(vec3 c) {
-    vec4 K = vec4(1.0, 2.0/3.0, 1.0/3.0, 3.0);
-    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
-    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
-}
-
+uniform float time = 3.0;
+// Example uniform for animation speed
 void fragment() {
-    vec4 original_color = texture(TEXTURE, UV);
-
-    // Hue cycles over time (0.0 → 1.0 wraps around rainbow)
-    float hue = mod(TIME * time_speed - UV.x - UV.y, 1.0);
-
-    // Convert HSV to RGB: full saturation & brightness
-    vec3 rainbow = hsv2rgb(vec3(hue, 1.0, 1.0));
-
-    // Apply rainbow, keep original alpha
-    COLOR = vec4(rainbow, original_color.a);
+	// Get the original color of the text pixel
+	vec4 original_color = texture(TEXTURE, UV);
+	// Example: Create a simple color gradient based on UV.x and time
+	float gradient_factor = sin(UV.x * 5.0 + TIME * time) * 0.5 + 0.5;
+	vec4 new_color = mix(vec4(1.0, 0.0, 0.0, 1.0), vec4(0.0, 0.0, 1.0, 1.0), gradient_factor);
+	// Apply the new color, preserving original alpha for transparency
+	COLOR = vec4(new_color.rgb, original_color.a);
 }

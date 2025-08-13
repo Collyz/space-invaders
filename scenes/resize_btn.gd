@@ -1,10 +1,11 @@
-extends Label
+extends Button
+var scaling_factor = 20.0
 
-func _ready():
+func _ready() -> void:
 	_adjust_font_size()
 
 func _adjust_font_size():
 	var viewport_width = get_viewport().size.x
 	# Calculate desired font size based on a ratio of viewport height
-	var new_font_size = int(viewport_width / 10.0) # Adjust this ratio as needed
+	var new_font_size = int(viewport_width / scaling_factor) # Adjust this ratio as needed
 	add_theme_font_size_override("font_size", new_font_size)

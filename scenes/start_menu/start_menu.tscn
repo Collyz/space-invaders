@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://csxyquu2r73dc"]
+[gd_scene load_steps=7 format=3 uid="uid://csxyquu2r73dc"]
 
 [ext_resource type="Script" uid="uid://dxa4h2xn84qcf" path="res://scenes/start_menu/start_menu.gd" id="1_jwbto"]
 [ext_resource type="Script" uid="uid://b6630ncqe6xa2" path="res://scenes/start_menu/title_label.gd" id="2_ujype"]
 [ext_resource type="Shader" uid="uid://crhop248vo2ti" path="res://scenes/start_menu/start_menu.gdshader" id="2_uqtq5"]
+[ext_resource type="Script" uid="uid://mmjkt8v1e02y" path="res://scenes/resize_btn.gd" id="3_4v5wy"]
 [ext_resource type="Texture2D" uid="uid://rqtvw5y1f1w8" path="res://start_text.png" id="5_4v5wy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tj3dw"]
 shader = ExtResource("2_uqtq5")
 shader_parameter/time = 3.0
 
-[node name="Control" type="Control"]
+[node name="StartMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,8 +55,9 @@ offset_right = 58.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/separation = 70
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="TOP_PADDING_LABEL" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
 
@@ -66,12 +68,24 @@ size_flags_vertical = 3
 text = "Space Invaders"
 script = ExtResource("2_ujype")
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="ShopBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 10
+text = "Shop"
+script = ExtResource("3_4v5wy")
+
+[node name="CreditsBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+script = ExtResource("3_4v5wy")
+
+[node name="BOTTOM_PADDING_LABEL" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_tj3dw")
 texture = ExtResource("5_4v5wy")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ShopBtn" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsBtn" to="." method="_on_credits_button_pressed"]

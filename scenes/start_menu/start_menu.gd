@@ -36,8 +36,12 @@ func resize_start_sprite() -> void:
 
 
 func _on_button_pressed():
-	var msg = 'Hello World!'
-	if title_label.text != msg:
-		title_label.text = msg
-	else:
-		title_label.text = "Space Invaders"
+	SceneSwitcher.switch_scene("res://scenes/game_scene/game_scene.tscn")
+
+
+func _on_shop_button_pressed() -> void:
+	SceneSwitcher.switch_scene("res://scenes/shop_scene/shop.tscn")
+
+
+func _on_credits_button_pressed() -> void:
+	SceneSwitcher.switch_scene("res://scenes/credits/credits.tscn")

@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj6imfwl6ynvm"]
+
+[ext_resource type="Script" uid="uid://w1d61ex87pjk" path="res://scenes/credits/credits.gd" id="1_c8xcy"]
+[ext_resource type="Script" uid="uid://xcmyn2a31lvu" path="res://scenes/resize_reg_label.gd" id="1_dr3ri"]
+[ext_resource type="Script" uid="uid://mmjkt8v1e02y" path="res://scenes/resize_btn.gd" id="2_8n0nl"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c8xcy")
+
+[node name="Bg" type="ColorRect" parent="."]
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+z_index = -1
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.5
+offset_right = 58.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 70
+
+[node name="TOP_PADDING_LABEL" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="CreatedLabel" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Created by Mohammed Mowla"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_dr3ri")
+
+[node name="VersionLabel" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Version: 1.0.1"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_dr3ri")
+
+[node name="Trademark Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Released with MIT License"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_dr3ri")
+
+[node name="BackBtn" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Back to Start"
+script = ExtResource("2_8n0nl")
+
+[node name="BOTTOM_PADDING_LABEL" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="VBoxContainer2/BackBtn" to="." method="_on_back_btn_pressed"]

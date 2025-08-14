@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmbljr4x7smnu"]
+
+[ext_resource type="Texture2D" uid="uid://cy625w5d53a33" path="res://misc_art/Invader.png" id="1_jpanq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq3ts"]
+atlas = ExtResource("1_jpanq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvk08"]
+atlas = ExtResource("1_jpanq")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_011tu"]
+atlas = ExtResource("1_jpanq")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pi4iw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xq3ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvk08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_011tu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvk08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xq3ts")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Enemy" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_pi4iw")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+polygon = PackedVector2Array(-19, -16, -19, -16, 19, -16, 32, -3, 32, 10, 26, 16, -26, 16, -32, 10, -32, -3)

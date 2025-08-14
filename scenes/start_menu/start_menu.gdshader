@@ -1,6 +1,8 @@
 shader_type canvas_item;
 
-uniform float time = 3.0;
+uniform float time = 1.0;
+
+
 // Example uniform for animation speed
 void fragment() {
 	// Get the original color of the text pixel

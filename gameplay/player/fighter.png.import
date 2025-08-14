@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjkwsspb32qwn"
-path="res://.godot/imported/thonk_cat.png-2b0856b7cd676b94f3d2d1546234c5d0.ctex"
+uid="uid://dr8tyx0w4uqnb"
+path="res://.godot/imported/fighter.png-f463943ece1fcf9329197affe5703711.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://thonk_cat.png"
-dest_files=["res://.godot/imported/thonk_cat.png-2b0856b7cd676b94f3d2d1546234c5d0.ctex"]
+source_file="res://gameplay/player/fighter.png"
+dest_files=["res://.godot/imported/fighter.png-f463943ece1fcf9329197affe5703711.ctex"]
 
 [params]
 

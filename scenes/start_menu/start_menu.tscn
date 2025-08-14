@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b6630ncqe6xa2" path="res://scenes/start_menu/title_label.gd" id="2_ujype"]
 [ext_resource type="Shader" uid="uid://crhop248vo2ti" path="res://scenes/start_menu/start_menu.gdshader" id="2_uqtq5"]
 [ext_resource type="Script" uid="uid://mmjkt8v1e02y" path="res://scenes/resize_btn.gd" id="3_4v5wy"]
-[ext_resource type="Texture2D" uid="uid://rqtvw5y1f1w8" path="res://start_text.png" id="5_4v5wy"]
+[ext_resource type="Texture2D" uid="uid://rqtvw5y1f1w8" path="res://misc_art/start_text.png" id="5_4v5wy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tj3dw"]
 shader = ExtResource("2_uqtq5")

@@ -14,10 +14,6 @@ var scale_speed := 4
 func _ready():
 	resize_start_sprite()
 	reposition_start_sprite()
-	
-	
-func _process(delta):
-	pass
 
 func reposition_start_sprite() -> void:
 	start_sprite.position.x = screen_width/2 

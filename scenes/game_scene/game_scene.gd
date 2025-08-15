@@ -4,7 +4,8 @@ extends Node2D
 @onready var pause_btn = $PauseBtn
 @onready var screen_size = get_viewport_rect().size
 
-var player_count = 2
+var player_count: int = 2
+var score: int = 0
 var player_preload = preload("res://gameplay/player/player.tscn")
 var player: Player = null
 

@@ -39,6 +39,6 @@ func shoot_bullet() -> void:
 		return
 	var bullet = bullet_scene.instantiate()
 	bullet.position = Vector2(self.position.x, self.position.y - half_height - bullet_padding)
-	bullet.rotation = deg_to_rad(-90)
+	#bullet.rotation = deg_to_rad(-90)
 	bullet.linear_velocity = Vector2.UP * bullet_speed
 	get_tree().current_scene.add_child(bullet)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://i4xee1txbbdd"]
+[gd_scene load_steps=5 format=3 uid="uid://boiyadqesrqji"]
 
 [ext_resource type="Texture2D" uid="uid://dr8tyx0w4uqnb" path="res://gameplay/player/fighter.png" id="1_01s76"]
 [ext_resource type="Script" uid="uid://dgryeh5i66gtg" path="res://gameplay/player/player.gd" id="1_xq3ts"]
+[ext_resource type="PackedScene" uid="uid://dua132fm7pwq6" path="res://gameplay/player/player_bullet/bullet.tscn" id="2_wvk08"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2uk1t"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_01s76"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -14,14 +15,16 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xq3ts")
+bullet_scene = ExtResource("2_wvk08")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_01s76")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-sprite_frames = SubResource("SpriteFrames_2uk1t")
-frame_progress = 0.382741
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, -61, 0, -61, 9, -26, 9, 0, 50, 21, 50, 34, 31, 63, -30, 63, -50, 34, -50, 21, -9, 0, -9, -26)
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true
+ignore_time_scale = true

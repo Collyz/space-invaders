@@ -28,4 +28,12 @@ icon = ExtResource("2_72663")
 flat = true
 script = ExtResource("4_xb203")
 
+[node name="LeftBtn" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="RightBtn" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
 [connection signal="pressed" from="PauseBtn" to="PauseBtn" method="_on_pressed"]

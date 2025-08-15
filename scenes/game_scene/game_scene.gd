@@ -11,8 +11,14 @@ var player: Player = null
 func _ready() -> void:
 	_resize_bg()
 	player = player_preload.instantiate()
-	
+	_place_player()
 	self.add_child(player)
 
 func _resize_bg() -> void:
 	bg.size = screen_size
+
+func _place_player() -> void:
+	if player != null:
+		var middle = screen_size.x / 2
+		var bottom_fifth = screen_size.y / 5 * 4
+		player.position = Vector2(middle, bottom_fifth)

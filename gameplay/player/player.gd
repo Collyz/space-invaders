@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var speed = 500.0
 @export var bullet_speed = 600.0
-@export var bullet_scene: PackedScene
+@export var simple_bullet: PackedScene
 @onready var screen_width = get_viewport_rect().size.x
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shoot_timer: Timer = $ShootTimer
@@ -14,6 +14,8 @@ extends CharacterBody2D
 @onready var half_width = frame_width / 2
 
 @export var bullet_padding = 10 # pixels up from player spaceship
+
+signal bullet_hit_enemy(enemy: Node)
 
 func _ready() -> void:
 	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
@@ -32,13 +34,15 @@ func _physics_process(_delta: float) -> void:
 	# Clamp inside the screen
 	self.position.x = clamp(position.x, half_width, screen_width - half_width)
 func _on_shoot_timer_timeout() -> void:
-	shoot_bullet()
+	shoot_simple_bullet()
 	
-func shoot_bullet() -> void:
-	if not bullet_scene:
+func shoot_simple_bullet() -> void:
+	if not simple_bullet:
 		return
-	var bullet = bullet_scene.instantiate()
+	var bullet = simple_bullet.instantiate()
 	bullet.position = Vector2(self.position.x, self.position.y - half_height - bullet_padding)
-	#bullet.rotation = deg_to_rad(-90)
-	bullet.linear_velocity = Vector2.UP * bullet_speed
+	bullet.enemy_hit.connect(_on_bullet_hit)
 	get_tree().current_scene.add_child(bullet)
+	
+func _on_bullet_hit(enemy):
+	emit_signal("bullet_hit_enemy", enemy)

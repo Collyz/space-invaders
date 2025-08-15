@@ -1,48 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmbljr4x7smnu"]
+[gd_scene load_steps=7 format=3 uid="uid://cmbljr4x7smnu"]
 
-[ext_resource type="Texture2D" uid="uid://cy625w5d53a33" path="res://misc_art/Invader.png" id="1_jpanq"]
+[ext_resource type="Script" uid="uid://bqnjdm751w2vb" path="res://gameplay/enemies/enemy.gd" id="1_pi4iw"]
+[ext_resource type="Texture2D" uid="uid://blvqob7tdb7gq" path="res://misc_art/simple_enemy.png" id="2_pi4iw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xq3ts"]
-atlas = ExtResource("1_jpanq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwyby"]
+atlas = ExtResource("2_pi4iw")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wvk08"]
-atlas = ExtResource("1_jpanq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmd88"]
+atlas = ExtResource("2_pi4iw")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_011tu"]
-atlas = ExtResource("1_jpanq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmro5"]
+atlas = ExtResource("2_pi4iw")
 region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pi4iw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xq3ts")
+"texture": SubResource("AtlasTexture_vwyby")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wvk08")
+"texture": SubResource("AtlasTexture_fmd88")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_011tu")
+"texture": SubResource("AtlasTexture_gmro5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wvk08")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xq3ts")
+"texture": SubResource("AtlasTexture_fmd88")
 }],
 "loop": true,
 "name": &"default",
 "speed": 2.0
 }]
 
-[node name="Enemy" type="Node2D"]
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_pi4iw")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pi4iw")
+frame_progress = 0.119939
+speed_scale = 2.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-19, -16, -19, -16, 19, -16, 32, -3, 32, 10, 26, 16, -26, 16, -32, 10, -32, -3)

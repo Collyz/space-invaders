@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dr8tyx0w4uqnb" path="res://gameplay/player/fighter.png" id="1_01s76"]
 [ext_resource type="Script" uid="uid://dgryeh5i66gtg" path="res://gameplay/player/player.gd" id="1_xq3ts"]
-[ext_resource type="PackedScene" uid="uid://dua132fm7pwq6" path="res://gameplay/player/player_bullet/bullet.tscn" id="2_wvk08"]
+[ext_resource type="PackedScene" uid="uid://348p1dgr1ve7" path="res://gameplay/player/player_simple_bullet/simple_bullet.tscn" id="2_wvk08"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_01s76"]
 animations = [{
@@ -17,7 +17,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xq3ts")
-bullet_scene = ExtResource("2_wvk08")
+simple_bullet = ExtResource("2_wvk08")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_01s76")

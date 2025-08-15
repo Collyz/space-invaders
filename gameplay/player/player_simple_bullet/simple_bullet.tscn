@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://348p1dgr1ve7"]
+
+[ext_resource type="Texture2D" uid="uid://dbggcc2umb1fg" path="res://misc_art/particle_1.png" id="1_gmtbs"]
+[ext_resource type="Script" uid="uid://b7rygu4jk5x66" path="res://gameplay/player/player_simple_bullet/simple_bullet.gd" id="1_u4rcb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4rcb"]
+radius = 4.0
+height = 18.0
+
+[node name="SimpleBullet" type="Area2D"]
+script = ExtResource("1_u4rcb")
+speed = 775
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_u4rcb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_gmtbs")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -100)
+scale = Vector2(0.420388, 0.416228)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

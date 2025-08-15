@@ -1,18 +1,28 @@
-[gd_scene load_steps=11 format=3 uid="uid://csxyquu2r73dc"]
+[gd_scene load_steps=14 format=3 uid="uid://csxyquu2r73dc"]
 
 [ext_resource type="Script" uid="uid://dxa4h2xn84qcf" path="res://scenes/start_menu/start_menu.gd" id="1_jwbto"]
 [ext_resource type="Script" uid="uid://b6630ncqe6xa2" path="res://scenes/start_menu/title_label.gd" id="2_ujype"]
 [ext_resource type="Shader" uid="uid://crhop248vo2ti" path="res://scenes/start_menu/start_menu.gdshader" id="2_uqtq5"]
 [ext_resource type="Script" uid="uid://mmjkt8v1e02y" path="res://scenes/resize_btn.gd" id="3_4v5wy"]
 [ext_resource type="Texture2D" uid="uid://rqtvw5y1f1w8" path="res://misc_art/start_text.png" id="5_4v5wy"]
-[ext_resource type="Texture2D" uid="uid://dbggcc2umb1fg" path="res://misc_art/particle_1.png" id="6_tj3dw"]
+[ext_resource type="Texture2D" uid="uid://btjhtdrtg2o44" path="res://misc_art/single_pixel.png" id="6_rudpn"]
+[ext_resource type="Script" uid="uid://bh10x2qrh84xk" path="res://scenes/start_menu/falling_in_particles.gd" id="7_rudpn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tj3dw"]
 shader = ExtResource("2_uqtq5")
 shader_parameter/time = 3.0
 
+[sub_resource type="Curve" id="Curve_eum3g"]
+_limits = [0.0, 3.41464, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.929664, 1.7094), 0.0, 0.0, 0, 0, Vector2(1, 3.41464), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gu1vn"]
+curve = SubResource("Curve_eum3g")
+
 [sub_resource type="Curve" id="Curve_rudpn"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.119403, 1), 0.0, 0.0, 0, 0, Vector2(0.238806, 0.137441), 0.0, 0.0, 0, 0, Vector2(0.337313, 0.915284), 0.0, 0.0, 0, 0, Vector2(0.474627, 0.276066), 0.0, 0.0, 0, 0, Vector2(0.573134, 0.815166), 0.0, 0.0, 0, 0, Vector2(0.713433, 0.314574), 0.0, 0.0, 0, 0, Vector2(0.850746, 0.67654), 0.0, 0.0, 0, 0, Vector2(1, 0.353081), 0.0, 0.0, 0, 0]
+_limits = [0.0, 1.0, 0.0, 5.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.718655, 1), 0.0, 0.0, 0, 0, Vector2(1.36086, 0.207317), 0.0, 0.0, 0, 0, Vector2(2.04893, 0.754268), 0.0, 0.0, 0, 0, Vector2(2.72171, 0.239024), 0.0, 0.0, 0, 0, Vector2(3.16514, 0.722561), 0.0, 0.0, 0, 0, Vector2(3.80734, 0.246951), 0.0, 0.0, 0, 0, Vector2(4.25076, 0.635366), 0.0, 0.0, 0, 0, Vector2(5, 0), 0.0, 0.0, 0, 0]
 point_count = 9
 
 [sub_resource type="CurveTexture" id="CurveTexture_eum3g"]
@@ -24,16 +34,17 @@ particle_flag_disable_z = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 0.0
-emission_ring_radius = 1000.0
-emission_ring_inner_radius = 900.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
 emission_ring_cone_angle = 90.0
 angle_min = 1.07288e-05
-angle_max = 720.0
-direction = Vector3(0, 0, 0)
+angle_max = 360.0
 gravity = Vector3(0, 0, 0)
-radial_accel_min = -15.0
-radial_accel_max = -15.0
-scale_min = 0.2
+radial_accel_min = -20.0
+radial_accel_max = 5.0
+radial_accel_curve = SubResource("CurveTexture_gu1vn")
+scale_min = 2.0
+scale_max = 5.0
 scale_curve = SubResource("CurveTexture_eum3g")
 
 [node name="StartMenu" type="Control"]
@@ -112,13 +123,15 @@ size_flags_vertical = 3
 material = SubResource("ShaderMaterial_tj3dw")
 texture = ExtResource("5_4v5wy")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
-amount = 10000
-texture = ExtResource("6_tj3dw")
-lifetime = 10.0
-preprocess = 15.0
-speed_scale = 4.2
+[node name="FallingInParticles" type="GPUParticles2D" parent="Sprite2D"]
+amount = 40000
+amount_ratio = 0.7
+texture = ExtResource("6_rudpn")
+lifetime = 15.0
+preprocess = 5.0
+fixed_fps = 120
 process_material = SubResource("ParticleProcessMaterial_gu1vn")
+script = ExtResource("7_rudpn")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ShopBtn" to="." method="_on_shop_button_pressed"]

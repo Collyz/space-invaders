@@ -36,7 +36,6 @@ animations = [{
 }]
 
 [node name="Enemy" type="CharacterBody2D"]
-scale = Vector2(2, 2)
 script = ExtResource("1_pi4iw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
